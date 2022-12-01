@@ -1,4 +1,4 @@
-import rawInput from './input'
+import rawInput from './01.input'
 
 const sortByCalories = (input: string) => {
   return input
@@ -12,9 +12,9 @@ const sortByCalories = (input: string) => {
     .sort((a, b) => (a < b ? 1 : -1))
 }
 
-const getElfWithMostCalories = (input: string) => sortByCalories(input)[0]
+export const getElfWithMostCalories = (input: string) => sortByCalories(input)[0]
 
-const getThreeElvesWithMostCalories = (input: string) => sortByCalories(input).slice(0, 3)
+export const getThreeElvesWithMostCalories = (input: string) => sortByCalories(input).slice(0, 3)
 
 console.log(getElfWithMostCalories(rawInput))
 console.log(getThreeElvesWithMostCalories(rawInput))
