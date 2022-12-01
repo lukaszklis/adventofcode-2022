@@ -1,5 +1,3 @@
-import rawInput from './01.input'
-
 const sortByCalories = (input: string) => {
   return input
     .split('\n\n')
@@ -15,6 +13,3 @@ const sortByCalories = (input: string) => {
 export const getElfWithMostCalories = (input: string) => sortByCalories(input)[0]
 
 export const getThreeElvesWithMostCalories = (input: string) => sortByCalories(input).slice(0, 3)
-
-console.log(getElfWithMostCalories(rawInput))
-console.log(getThreeElvesWithMostCalories(rawInput))
