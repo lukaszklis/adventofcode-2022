@@ -4,6 +4,6 @@ import rawInput from './02.input'
 
 describe('02', () => {
   it('returns proper score', () => {
-    expect(rockPaperScissors(rawInput)).toEqual(12586)
+    expect(rockPaperScissors(rawInput)).toEqual(13924)
   })
 })
