@@ -1,3 +1,4 @@
-import { test } from 'vitest'
+import { describe, it, expect } from 'vitest'
 
-test('02', () => {})
+describe('02', () => {
+})

@@ -1,13 +1,13 @@
-import { assert, test } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import { getElfWithMostCalories, getThreeElvesWithMostCalories } from './01'
 import rawInput from './01.input'
 
-test('01', () => {
-  test('returns calories for elf with most calories from all', () => {
-    assert.equal(getElfWithMostCalories(rawInput), 66186)
+describe('01', () => {
+  it('returns calories for elf with most calories from all', () => {
+    expect(getElfWithMostCalories(rawInput)).toEqual(66186)
   })
 
-  test('returns calories for first three elves with most calories from all', () => {
-    assert.equal(getThreeElvesWithMostCalories(rawInput), [66186, 65638, 64980])
+  it('returns calories for first three elves with most calories from all', () => {
+    expect(getThreeElvesWithMostCalories(rawInput)).toEqual([66186, 65638, 64980])
   })
 })
