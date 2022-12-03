@@ -1,3 +1,10 @@
+export const exampleInput = `vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw`
+
 export default `lflZfgnSnlmmlgGfjGthQPtLNsQhvbHLLpSS
 zrCVDVFMJTCTcCJMwCThWbtbpbWpPbtbHPLQssLsHP
 rBFcrwFzFwwVDcDrzTzJfnRGjllBdGZnnZfhqmdn
