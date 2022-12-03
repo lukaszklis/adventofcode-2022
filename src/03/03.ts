@@ -36,3 +36,7 @@ export const rucksackPrioritiesPartOne = (input: string): number => {
     return priorities + duplicatePriorities
   }, 0)
 }
+
+export const rucksackPrioritiesPartTwo = (input: string): number => {
+  return 0
+}

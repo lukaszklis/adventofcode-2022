@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { rucksackPrioritiesPartOne } from './03'
+import { rucksackPrioritiesPartOne, rucksackPrioritiesPartTwo } from './03'
 import rawInput, { exampleInput } from './03.input'
 
 describe('03', () => {
@@ -12,4 +12,6 @@ describe('03', () => {
       expect(rucksackPrioritiesPartOne(rawInput)).toEqual(8401)
     })
   })
+
+  describe('part 2', () => {})
 })
