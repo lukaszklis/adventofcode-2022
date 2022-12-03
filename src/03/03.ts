@@ -1,9 +1,13 @@
-const mapToPriority = (character: string): number => {
-  const priorities: string = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  const priority = [...priorities].findIndex(c => c === character)
+const GROUP_SIZE = 3
+const ITEMS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-  return priority + 1
+function* splitToChunks<T>(arr: T[], n: number): Generator<T[], void> {
+  for (let i = 0; i < arr.length; i += n) {
+    yield arr.slice(i, i + n)
+  }
 }
+
+const mapToPriority = (character: string): number => [...ITEMS].findIndex(c => c === character) + 1
 
 const mapToCompartments = (rucksack: string): [string, string] => {
   const itemsCount = rucksack.length
@@ -11,7 +15,7 @@ const mapToCompartments = (rucksack: string): [string, string] => {
   return [rucksack.slice(0, itemsCount / 2), rucksack.slice(itemsCount / 2)]
 }
 
-const findDuplicateItems = (compartment: string, otherCompartment: string): string[] => {
+const getDuplicateItems = (compartment: string, otherCompartment: string): string[] => {
   const duplicates = new Set<string>()
 
   Array.from(compartment).forEach(c => {
@@ -23,20 +27,40 @@ const findDuplicateItems = (compartment: string, otherCompartment: string): stri
   return [...duplicates.values()]
 }
 
+const getGroupDuplicateItems = (group: string[]): string[] => {
+  const duplicateItems = new Set<string>()
+  const [first, second, third] = group
+
+  Array.from(ITEMS).forEach(item => {
+    if (first.includes(item) && second.includes(item) && third.includes(item)) {
+      duplicateItems.add(item)
+    }
+  })
+
+  return [...duplicateItems.values()]
+}
+
+const sumPriorities = (priorities: number[]): number =>
+  priorities.reduce((sum, priority) => sum + priority, 0)
+
 export const rucksackPrioritiesPartOne = (input: string): number => {
   const rucksacks = input.trim().split('\n')
 
   return rucksacks.reduce((priorities, rucksack) => {
     const compartments = mapToCompartments(rucksack)
-    const duplicateItems = findDuplicateItems(...compartments)
-    const duplicatePriorities = duplicateItems
-      .map(mapToPriority)
-      .reduce((sum, priority) => sum + priority, 0)
+    const duplicateItems = getDuplicateItems(...compartments)
+    const duplicatesPriorities = duplicateItems.map(mapToPriority)
 
-    return priorities + duplicatePriorities
+    return priorities + sumPriorities(duplicatesPriorities)
   }, 0)
 }
 
 export const rucksackPrioritiesPartTwo = (input: string): number => {
-  return 0
+  const groups = [...splitToChunks(input.trim().split('\n'), GROUP_SIZE)]
+
+  return groups.reduce((priorities, group) => {
+    const groupDuplicatesPriorities = getGroupDuplicateItems(group).map(mapToPriority)
+
+    return priorities + sumPriorities(groupDuplicatesPriorities)
+  }, 0)
 }

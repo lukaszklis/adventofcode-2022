@@ -13,5 +13,13 @@ describe('03', () => {
     })
   })
 
-  describe('part 2', () => {})
+  describe('part 2', () => {
+    it("returns proper sum of priorities for readme's example", () => {
+      expect(rucksackPrioritiesPartTwo(exampleInput)).toEqual(70)
+    })
+
+    it('returns proper sum of priorities for full input', () => {
+      expect(rucksackPrioritiesPartTwo(rawInput)).toEqual(2641)
+    })
+  })
 })
