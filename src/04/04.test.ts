@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { campCleanupPartOne } from './04'
+import { campCleanupPartOne, campCleanupPartTwo } from './04'
 import rawInput, { exampleInput } from './04.input'
 
 describe('04', () => {
@@ -10,6 +10,12 @@ describe('04', () => {
 
     it('returns correct number of pairs with fully overlapping assignments for raw input', () => {
       expect(campCleanupPartOne(rawInput)).toEqual(584)
+    })
+  })
+
+  describe('part 2', () => {
+    it('returns correct number of pairs with overlapping assignments for example input', () => {
+      expect(campCleanupPartTwo(exampleInput)).toEqual(4)
     })
   })
 })

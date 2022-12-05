@@ -31,3 +31,7 @@ export const campCleanupPartOne = (input: string): number => {
     return sum + Number(isSectionOverlapping(elfTwoSection, elfOneSection))
   }, 0)
 }
+
+export const campCleanupPartTwo = (input: string): number => {
+  return 0
+}
