@@ -13,10 +13,16 @@ const mapToSection = (elf: string): number[] => {
   return range(sectionIds[0], sectionIds[1])
 }
 
-const isSectionOverlapping = (section: number[], otherSection: number[]): boolean =>
+const isSectionFullyOverlapping = (section: number[], otherSection: number[]): boolean =>
   section.every(id => otherSection.includes(id))
 
-export const campCleanupPartOne = (input: string): number => {
+const isSectionPartiallyOverlapping = (section: number[], otherSection: number[]): boolean =>
+  section.some(id => otherSection.includes(id))
+
+const cleanupFactory = (
+  input: string,
+  predicate: (section: number[], otherSection: number[]) => boolean
+): number => {
   const pairs = input.split('\n')
 
   return pairs.reduce((sum, pair) => {
@@ -25,13 +31,15 @@ export const campCleanupPartOne = (input: string): number => {
     const elfTwoSection = mapToSection(elfTwo)
 
     if (elfOneSection.length < elfTwoSection.length) {
-      return sum + Number(isSectionOverlapping(elfOneSection, elfTwoSection))
+      return sum + Number(predicate(elfOneSection, elfTwoSection))
     }
 
-    return sum + Number(isSectionOverlapping(elfTwoSection, elfOneSection))
+    return sum + Number(predicate(elfTwoSection, elfOneSection))
   }, 0)
 }
 
-export const campCleanupPartTwo = (input: string): number => {
-  return 0
-}
+export const campCleanupPartOne = (input: string): number =>
+  cleanupFactory(input, isSectionFullyOverlapping)
+
+export const campCleanupPartTwo = (input: string): number =>
+  cleanupFactory(input, isSectionPartiallyOverlapping)

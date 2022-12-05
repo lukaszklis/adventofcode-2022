@@ -17,5 +17,9 @@ describe('04', () => {
     it('returns correct number of pairs with overlapping assignments for example input', () => {
       expect(campCleanupPartTwo(exampleInput)).toEqual(4)
     })
+
+    it('returns correct number of pairs with overlapping assignments for raw input', () => {
+      expect(campCleanupPartTwo(rawInput)).toEqual(933)
+    })
   })
 })
